@@ -17,12 +17,19 @@
     }
 
     body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
       padding: 50px;
       text-align: center;
+      justify-content: center;
+      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+
     }
 
     .container {
@@ -34,6 +41,8 @@
       transition: all 0.3s ease-in-out;
       box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
       background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+      align-items: center;
+
     }
 
     .container:hover {
