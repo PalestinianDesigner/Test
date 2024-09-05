@@ -19,12 +19,12 @@
       height: 100%;
       width: 100%;
       place-items: center;
-      background: linear-gradient(375deg, #1cc7d0, #2ede98);
+      background: linear-gradient(375deg, #5F2191, #AD7BD6);
     }
 
     ::selection {
       color: #fff;
-      background: #1cc7d0;
+      background: #5F2191;
     }
 
     .wrapper {
@@ -40,7 +40,7 @@
       height: 100%;
       width: 100%;
       padding: 5px;
-      background: #fff;
+      background: linear-gradient(375deg, #000000, #AD7BD6);
       border-radius: 10px;
       transform: translateY(0deg);
       transform-style: preserve-3d;
@@ -77,16 +77,18 @@
       width: 150px;
       padding: 5px;
       border-radius: 50%;
-      background: linear-gradient(375deg, #1cc7d0, #2ede98);
+      background: linear-gradient(375deg, #FFFFFF, #FFFFFF);
     }
 
     .wrapper .back-face .info {
       text-align: center;
+      color: #fff; /* White text */
     }
 
     .back-face .info .title {
       font-size: 30px;
       font-weight: 500;
+      color: #fff; /* White text */
     }
 
     .back-face ul {
@@ -101,16 +103,36 @@
       text-align: center;
       margin: 0 5px;
       line-height: 38px;
-      border: 2px solid transparent;
+      border: 0px solid transparent;
       border-radius: 50%;
-      background: linear-gradient(375deg, #1cc7d0, #2ede98);
+      background: linear-gradient(375deg, #5F2191, #AD7BD6);
       transition: all 0.5s ease;
     }
 
     .back-face ul a:hover {
-      color: #1cc7d0;
-      border-color: #1cc7d0;
+      color: #5F2191;
+      border-color: #AD7BD6;
       background: linear-gradient(375deg, transparent, transparent);
+    }
+
+    .social-button.save-contact {
+      display: block;
+      height: auto;
+      padding: 10px 20px;
+      color: #fff;
+      text-align: center;
+      margin-top: 10px;
+      border-radius: 10px;
+      background: linear-gradient(375deg, #5F2191, #AD7BD6);
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.5s ease;
+    }
+
+    .social-button.save-contact:hover {
+      background: linear-gradient(375deg, transparent, transparent);
+      color: #5F2191;
+      border: 2px solid #5F2191;
     }
   </style>
 </head>
@@ -132,6 +154,9 @@
         <a href="https://wa.me/972593828851" target="_blank"><i class="fab fa-whatsapp"></i></a>
         <a href="https://maps.app.goo.gl/2ZXd3VdLb434odqe6" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
       </ul>
+      <a class="social-button save-contact" href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3ARoses%20Passion%0AN%3APassion%3BRoses%3B%3B%3B%0ATEL%3BTYPE%3DCELL%3A%2B972593828851%0AEND%3AVCARD" download="RosesPassion.vcf">
+        <i class="fas fa-address-book"></i> Save Contact
+      </a>
     </div>
   </div>
 </body>
