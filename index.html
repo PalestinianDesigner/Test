@@ -3,348 +3,136 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile Card Hover Animation</title>
+  <title>3D Flip Card on Hover</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   <style>
     @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
-
-    :root {
-      --primary-color: #5F2191; /* Default palette */
-      --secondary-color: #C2A5DA;
-      --button-gradient-start: #5F2191;
-      --button-gradient-end: #C2A5DA;
-      --text-color: #FFFFFF;
-    }
-
-    body {
+    * {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      width: 100vw;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
-      padding: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     }
 
-    .container {
-      height: 200px;
-      width: 200px;
-      overflow: hidden;
-      margin: 0 auto;
-      border-radius: 50%;
-      transition: all 0.3s ease-in-out;
-      box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
-      background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    }
-
-    .container:hover {
-      width: 350px;
-      height: 100vh;
-      padding: 30px;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      border-radius: 5px;
-      box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
-    }
-
-    .container .wrapper img {
-      position: relative;
-      z-index: 20;
-      border-radius: 50%;
-      display: block;
-      height: 150px;
-      width: 150px;
-      border: 5px solid #fff;
-      object-fit: cover;
-      margin: 20px auto;
-      transition: all 0.3s ease;
-    }
-
-    .container:hover .wrapper img.active {
-      height: 500px;
-      width: 350px;
-      margin: 0px auto;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .wrapper .title {
-      color: var(--text-color);
-      font-size: 25px;
-      font-weight: 500;
-      padding: 10px;
-      line-height: 25px;
-    }
-
-    .wrapper .place {
-      color: var(--text-color);
-      font-size: 17px;
-      line-height: 0px;
-      margin: 10px 0;
-    }
-
-    .content {
-      color: var(--text-color);
-      font-size: 17px;
-      margin-top: 10px;
-      padding: 1px 20px 10px 20px !important;
-    }
-
-    .content .buttons {
-      display: flex;
-      justify-content: center;
-    }
-
-    .buttons .btn {
-      height: 40px;
-      width: 180px;
-      margin: 0 5px;
-    }
-
-    .buttons .btn a {
+    html, body {
+      display: grid;
       height: 100%;
       width: 100%;
-      background: linear-gradient(45deg, var(--button-gradient-start), var(--button-gradient-end));
-      border: none;
-      outline: none;
-      cursor: pointer;
-      font-size: 17px;
-      font-weight: 500;
-      border-radius: 5px;
-      color: var(--text-color);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: all 0.3s;
+      place-items: center;
+      background: linear-gradient(375deg, #1cc7d0, #2ede98);
     }
 
-    .buttons .btn a i {
-      margin-right: 8px; /* Spacing between icon and text */
+    ::selection {
+      color: #fff;
+      background: #1cc7d0;
     }
 
-    .btn a:hover {
-      transform: scale(0.95);
-    }
-
-    .container .icons {
+    .wrapper {
+      height: 400px;
+      width: 320px;
       position: relative;
-      margin-top: -410px;
-      margin-left: 10px;
-      list-style: none;
+      transform-style: preserve-3d;
+      perspective: 1000px;
     }
 
-    .container .icons.active {
-      display: none;
+    .wrapper .card {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      padding: 5px;
+      background: #fff;
+      border-radius: 10px;
+      transform: translateY(0deg);
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+      transition: transform 0.7s cubic-bezier(0.4,0.2,0.2,1);
     }
 
-    .container .icons li {
+    .wrapper:hover > .front-face {
+      transform: rotateY(-180deg);
+    }
+
+    .wrapper .card img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .wrapper .back-face {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: column;
+      transform: rotateY(180deg);
+    }
+
+    .wrapper:hover > .back-face {
+      transform: rotateY(0deg);
+    }
+
+    .wrapper .back-face img {
+      height: 150px;
+      width: 150px;
+      padding: 5px;
+      border-radius: 50%;
+      background: linear-gradient(375deg, #1cc7d0, #2ede98);
+    }
+
+    .wrapper .back-face .info {
+      text-align: center;
+    }
+
+    .back-face .info .title {
+      font-size: 30px;
+      font-weight: 500;
+    }
+
+    .back-face ul {
+      display: flex;
+    }
+
+    .back-face ul a {
+      display: block;
       height: 40px;
       width: 40px;
-      margin: 5px 0;
-      opacity: 0;
-      margin-left: -100px;
+      color: #fff;
+      text-align: center;
+      margin: 0 5px;
+      line-height: 38px;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      background: linear-gradient(375deg, #1cc7d0, #2ede98);
       transition: all 0.5s ease;
     }
 
-    .container:hover .icons li {
-      opacity: 1;
-      margin-left: 7px;
-    }
-
-    .container:hover .icons li:nth-child(2) {
-      transition-delay: 0.2s;
-    }
-
-    .container:hover .icons li:nth-child(3) {
-      transition-delay: 0.4s;
-    }
-
-    .container .icons li a {
-      color: var(--primary-color);
-      height: 100%;
-      width: 100%;
-      border-radius: 50%;
-      background: var(--text-color);
-      display: block;
-      line-height: 40px;
-      transition: all 0.3s;
-    }
-
-    .container .icons li a:hover {
-      transform: scale(0.9);
-    }
-
-    .footer {
-      margin-top: 10px;
-      font-size: 12px;
-      color: var(--text-color);
-    }
-
-    .footer a {
-      color: var(--text-color);
-      text-decoration: none;
-      border-bottom: 1px solid var(--text-color);
-    }
-
-    .footer a:hover {
-      color: #FFD700; /* Gold color on hover */
-      border-bottom-color: #FFD700;
-    }
-
-    /* Hover Color Overrides for Specific Platforms */
-    .instagram:hover {
-      --primary-color: #E1306C;
-      --secondary-color: #E1306C;
-      --icon-gradient-start: #E1306C;
-      --icon-gradient-end: #E1306C;
-      --text-color: #FFFFFF;
-    }
-
-    .tiktok:hover {
-      --primary-color: #010101;
-      --secondary-color: #010101;
-      --icon-gradient-start: #010101;
-      --icon-gradient-end: #010101;
-      --text-color: #FFFFFF;
-    }
-
-    .facebook:hover {
-      --primary-color: #1877F2;
-      --secondary-color: #1877F2;
-      --icon-gradient-start: #1877F2;
-      --icon-gradient-end: #1877F2;
-      --text-color: #FFFFFF;
-    }
-
-    .whatsapp:hover {
-      --primary-color: #25D366;
-      --secondary-color: #25D366;
-      --icon-gradient-start: #25D366;
-      --icon-gradient-end: #25D366;
-      --text-color: #FFFFFF;
-    }
-
-    .location:hover {
-      --primary-color: #FF5722;
-      --secondary-color: #FF5722;
-      --icon-gradient-start: #FF5722;
-      --icon-gradient-end: #FF5722;
-      --text-color: #FFFFFF;
-    }
-
-    .save-contact:hover {
-      --primary-color: #5F2191;
-      --secondary-color: #000000;
-      --button-gradient-start: #5F2191;
-      --button-gradient-end: #000000;
-      --text-color: #FFFFFF;
-    }
-
-    /* Media query for mobile phones (max-width: 768px) */
-    @media (max-width: 768px) {
-      .container {
-        width: 100%;
-        height: auto;
-        border-radius: 5px;
-        box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.2);
-      }
-
-      .container:hover {
-        width: 100%;
-        height: auto;
-        border-radius: 5px;
-        box-shadow: none;
-      }
-
-      .container .wrapper img {
-        width: 100%;
-        height: auto;
-        border-radius: 5px;
-      }
-
-      .icons {
-        margin-top: 10px;
-      }
-    }
-
-    /* Media query for tablets (max-width: 1024px) */
-    @media (max-width: 1024px) {
-      .container {
-        width: 80%;
-        height: auto;
-        border-radius: 10px;
-        box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.3);
-      }
-
-      .container:hover {
-        width: 80%;
-        height: auto;
-        box-shadow: none;
-      }
-
-      .container .wrapper img {
-        width: 80%;
-        height: auto;
-        border-radius: 10px;
-      }
-
-      .icons {
-        margin-top: 20px;
-      }
+    .back-face ul a:hover {
+      color: #1cc7d0;
+      border-color: #1cc7d0;
+      background: linear-gradient(375deg, transparent, transparent);
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="wrapper">
-      <a href="#">
-        <img src="https://i.imgur.com/pBO1aWj.jpg" alt="Profile Image">
-      </a>
-      <div class="title">
-        Roses Passion
-      </div>
-      <div class="place">
-        Doa Adele
-      </div>
+  <div class="wrapper">
+    <div class="card front-face">
+      <img src="https://i.imgur.com/pBO1aWj.jpg" alt="Front Image">
     </div>
-    <div class="content">
-      <p>
-        Make your event more beautiful with unforgettable moments
-      </p>
-      <div class="buttons">
-        <div class="btn">
-          <a class="social-button save-contact" href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0AVERSION%3A3.0%0AFN%3ARoses%20Passion%0AN%3APassion%3BRoses%3B%3B%3B%0ATEL%3BTYPE%3DCELL%3A%2B972593828851%0AEND%3AVCARD" download="RosesPassion.vcf">
-            <i class="fas fa-address-book"></i> Save Contact
-          </a>
-        </div>
+    <div class="card back-face">
+      <img src="https://i.imgur.com/pBO1aWj.jpg" alt="Back Image">
+      <div class="info">
+        <div class="title">Roses Passion</div>
+        <p>Make your event more beautiful with unforgettable moments</p>
       </div>
-    </div>
-    <div class="footer">
-      Designer <a href="https://www.tiktok.com/@oadelei?is_from_webapp=1&sender_device=pc" target="_blank">@o.adelei</a>
-    </div>
-    <div class="icons">
-      <li class="instagram"><a href="https://www.instagram.com/rosespassio.n/" target="_blank"><span class="fab fa-instagram"></span></a></li>
-      <li class="tiktok"><a href="https://www.tiktok.com/@roses.passion" target="_blank"><span class="fab fa-tiktok"></span></a></li>
-      <li class="facebook"><a href="https://www.facebook.com/people/Roses-passion/100067756240596/?mibextid=LQQJ4d" target="_blank"><span class="fab fa-facebook-f"></span></a></li>
-      <li class="whatsapp"><a href="https://wa.me/972593828851" target="_blank"><span class="fab fa-whatsapp"></span></a></li>
-      <li class="location"><a href="https://maps.app.goo.gl/2ZXd3VdLb434odqe6" target="_blank"><span class="fas fa-map-marker-alt"></span></a></li>
+      <ul>
+        <a href="https://www.facebook.com/profile.php?id=100067756240596&mibextid=LQQJ4d" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.tiktok.com/@roses.passion" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/rosespassio.n/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/972593828851" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://maps.app.goo.gl/2ZXd3VdLb434odqe6" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+      </ul>
     </div>
   </div>
-
-  <script>
-    const img = document.querySelector("img");
-    const icons = document.querySelector(".icons");
-    img.onclick = function () {
-      this.classList.toggle("active");
-      icons.classList.toggle("active");
-    }
-  </script>
 </body>
 </html>
