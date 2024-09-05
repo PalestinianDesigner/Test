@@ -16,7 +16,7 @@
       --text-color: #FFFFFF;
     }
 
-body {
+    body {
       margin: 0;
       padding: 0;
       height: 100vh;
@@ -30,8 +30,7 @@ body {
       text-align: center;
       background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     }
-    
-    /* Default styles for desktop */
+
     .container {
       height: 200px;
       width: 200px;
@@ -42,8 +41,6 @@ body {
       box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
       background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     }
-
-
 
     .container:hover {
       width: 350px;
@@ -209,6 +206,7 @@ body {
       --icon-gradient-end: #E1306C;
       --text-color: #FFFFFF;
     }
+
     .tiktok:hover {
       --primary-color: #010101;
       --secondary-color: #010101;
@@ -216,6 +214,7 @@ body {
       --icon-gradient-end: #010101;
       --text-color: #FFFFFF;
     }
+
     .facebook:hover {
       --primary-color: #1877F2;
       --secondary-color: #1877F2;
@@ -223,6 +222,7 @@ body {
       --icon-gradient-end: #1877F2;
       --text-color: #FFFFFF;
     }
+
     .whatsapp:hover {
       --primary-color: #25D366;
       --secondary-color: #25D366;
@@ -230,6 +230,7 @@ body {
       --icon-gradient-end: #25D366;
       --text-color: #FFFFFF;
     }
+
     .location:hover {
       --primary-color: #FF5722;
       --secondary-color: #FF5722;
@@ -237,6 +238,7 @@ body {
       --icon-gradient-end: #FF5722;
       --text-color: #FFFFFF;
     }
+
     .save-contact:hover {
       --primary-color: #5F2191;
       --secondary-color: #000000;
@@ -245,26 +247,56 @@ body {
       --text-color: #FFFFFF;
     }
 
-    /* Media query for smaller screens (mobile) */
+    /* Media query for mobile phones (max-width: 768px) */
     @media (max-width: 768px) {
       .container {
         width: 100%;
         height: auto;
-        border-radius: 5px; /* Remove the circular shape for mobile */
-        box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.2); /* Reduced shadow for mobile */
+        border-radius: 5px;
+        box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.2);
       }
 
       .container:hover {
         width: 100%;
         height: auto;
         border-radius: 5px;
-        box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.2); /* No significant hover effect for mobile */
+        box-shadow: none;
       }
 
       .container .wrapper img {
         width: 100%;
         height: auto;
-        border-radius: 5px; /* Adjust image radius for mobile */
+        border-radius: 5px;
+      }
+
+      .icons {
+        margin-top: 10px;
+      }
+    }
+
+    /* Media query for tablets (max-width: 1024px) */
+    @media (max-width: 1024px) {
+      .container {
+        width: 80%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.3);
+      }
+
+      .container:hover {
+        width: 80%;
+        height: auto;
+        box-shadow: none;
+      }
+
+      .container .wrapper img {
+        width: 80%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .icons {
+        margin-top: 20px;
       }
     }
   </style>
