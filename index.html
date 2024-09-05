@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile Card Hover Animation | CodingNepal</title>
+  <title>Profile Card Hover Animation</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   <style>
     @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
@@ -16,25 +16,25 @@
       --text-color: #FFFFFF;
     }
 
-    body {
+body {
       margin: 0;
       padding: 0;
+      height: 100vh;
+      width: 100vw;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
       padding: 50px;
-      text-align: center;
+      display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      text-align: center;
       background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-
-
     }
-
+    
     /* Default styles for desktop */
     .container {
-      height: 250px;
-      width: 250px;
+      height: 200px;
+      width: 200px;
       overflow: hidden;
       margin: 0 auto;
       border-radius: 50%;
@@ -46,6 +46,12 @@
     .container:hover {
       height: 500px;
       width: 350px;
+      height: 100vh;
+      padding: 30px;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
       border-radius: 5px;
       box-shadow: 0px 1px 35px 0px rgba(0, 0, 0, 0.3);
     }
@@ -55,8 +61,8 @@
       z-index: 20;
       border-radius: 50%;
       display: block;
-      height: 200px;
-      width: 200px;
+      height: 150px;
+      width: 150px;
       border: 5px solid #fff;
       object-fit: cover;
       margin: 20px auto;
@@ -73,7 +79,7 @@
 
     .wrapper .title {
       color: var(--text-color);
-      font-size: 30px;
+      font-size: 25px;
       font-weight: 500;
       padding: 10px;
       line-height: 25px;
@@ -100,7 +106,7 @@
 
     .buttons .btn {
       height: 40px;
-      width: 150px;
+      width: 180px;
       margin: 0 5px;
     }
 
@@ -132,7 +138,7 @@
 
     .container .icons {
       position: relative;
-      margin-top: -460px;
+      margin-top: -410px;
       margin-left: 10px;
       list-style: none;
     }
@@ -237,6 +243,29 @@
       --button-gradient-start: #5F2191;
       --button-gradient-end: #000000;
       --text-color: #FFFFFF;
+    }
+
+    /* Media query for smaller screens (mobile) */
+    @media (max-width: 768px) {
+      .container {
+        width: 100%;
+        height: auto;
+        border-radius: 5px; /* Remove the circular shape for mobile */
+        box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.2); /* Reduced shadow for mobile */
+      }
+
+      .container:hover {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+        box-shadow: 0px 1px 15px 0px rgba(0, 0, 0, 0.2); /* No significant hover effect for mobile */
+      }
+
+      .container .wrapper img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px; /* Adjust image radius for mobile */
+      }
     }
   </style>
 </head>
